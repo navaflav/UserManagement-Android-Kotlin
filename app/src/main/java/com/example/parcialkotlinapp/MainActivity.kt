@@ -3,10 +3,12 @@ package com.example.parcialkotlinapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +18,34 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_main)
+
+        val tvSaludo =findViewById<TextView>(R.id.tvSaludo)
+
+        // Nombre recibido desde LoginActivity
+        val  nombreUsuario = intent.getStringExtra(
+            "nombreUsuario"
+        ) ?: "Usuario"
+
+        //Hora Actual del dispositivo
+        val horaActual =
+            Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+
+        //Determinar saludo
+        var saludo = when(horaActual){
+
+            in 5..11 ->
+                "Buenos días"
+
+            in 12..17 ->
+                "Buenas tardes"
+
+            else ->
+                "Buenas noches"
+        }
+
+        //Mostrar saludo personalizado
+
+        tvSaludo.text = "$saludo, $nombreUsuario"
 
         // Manejo de los bordes de la pantalla
         ViewCompat.setOnApplyWindowInsetsListener(

@@ -19,7 +19,7 @@ class ParImparActivity : AppCompatActivity() {
         val tvResultado = findViewById<TextView>(R.id.tvResultado)
         val btnVolver = findViewById<Button>(R.id.btnVolver)
 
-        // Evento del botón
+
         btnValidar.setOnClickListener {
 
             val texto = etNumero.text.toString()
