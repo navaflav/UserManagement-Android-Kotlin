@@ -102,31 +102,36 @@ class LoginActivity : AppCompatActivity() {
 
                             val usuario = response.body()
 
-                            tvMensaje.text =
-                                "Bienvenido ${usuario?.nombre}"
+                            if(usuario != null){
 
-                            // Ir al menú principal
-                            val intent = Intent(
-                                this@LoginActivity,
-                                MainActivity::class.java
-                            )
+                                tvMensaje.text =
+                                    "Bienvenido ${usuario?.nombre}"
 
-                            // Enviar información del usuario
-                            intent.putExtra(
-                                "nombreUsuario",
-                                usuario?.nombre
-                            )
+                                // Ir al menú principal
+                                val intent = Intent(
+                                    this@LoginActivity,
+                                    MainActivity::class.java
+                                )
 
-                            intent.putExtra(
-                                "correoUsuario",
-                                usuario?.correo
-                            )
+                                // Enviar información del usuario
+                                intent.putExtra(
+                                    "nombreUsuario",
+                                    usuario?.nombre
+                                )
 
-                            startActivity(intent)
+                                intent.putExtra(
+                                    "correoUsuario",
+                                    usuario?.correo
+                                )
 
-                            // Cerrar pantalla de Login
-                            finish()
+                                startActivity(intent)
 
+                                // Cerrar pantalla de Login
+                                finish()
+                            }else {
+                                tvMensaje.text =
+                                    "No se pudo obtener la información del usuario"
+                            }
                         }
                         // CREDENCIALES INCORRECTAS
                         else if (response.code() == 401) {

@@ -9,13 +9,15 @@
     android:padding="24dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tvSaludo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Práctica de Kotlin"
+        android:text="Bienvenido"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
+        android:textColor="#4A424D"
+        android:layout_marginTop="32dp"
+        android:gravity="center_horizontal"
         android:layout_marginBottom="30dp" />
 
     <Button
